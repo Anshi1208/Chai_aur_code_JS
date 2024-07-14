@@ -37,8 +37,8 @@ console.log(string);
 /* -----------Activity:-5(Understanding const)----------------*/
 
 // as i already declared variable using const in "task-3" so now i just reuse it
-
-bool = "false";  //task-6
+//task-6
+bool = "false";  
 console.log(bool)
 
 
