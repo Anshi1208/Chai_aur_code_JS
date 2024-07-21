@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        .newClass {
+        color: red;
+        font-size: 20px;
+    }
+
+    #myEle {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 200px; /* Center text vertically */
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <p id="name">Hello Ankita</p> 
+    <hr>
+    <h2 class="color">I want to change color</h2>
+     
+    <hr>
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    
+    <hr>
+    <div id="toBeRemoved">This div will be removed.</div>
+    
+
+    <hr>
+    <img id="myImage" src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-169994-674010.jpg&fm=jpg" alt="Old Image">
+    
+    <hr>
+
+    <div id="myElement">Hello World</div>
+    <button id="addClassButton">Add Class</button>
+    <button id="removeClassButton">Remove Class</button>
+    <button id="toggleClassButton">Toggle Class</button>
+
+    <hr>
+
+    <p id="myParagraph">Original text content.</p>
+    <button id="changeTextButton">Change Text</button>
+
+    <hr>
+    <br>
+    <br>
+    <div id="myEle">Hover over me!</div>
+    <hr>
+    <br>
+    <br>
+</body>
+<script>
+    let names = document.getElementById("name") //task-1
+    names.textContent = "Hello world"
+
+    let colors = document.querySelector(".color") //task-2
+    colors.style.backgroundColor = "red"
+
+
+    const newDiv = document.createElement('div'); //task-3
+    newDiv.textContent = 'Hello, this is a new div element!';
+    document.body.appendChild(newDiv);
+
+
+
+    const myList = document.getElementById('myList'); //task-4
+    const newListItem = document.createElement('li');
+    newListItem.textContent = 'Item 3(Add with the help of DOM)';
+    myList.appendChild(newListItem);
+
+
+    const elementRemove = document.getElementById('toBeRemoved'); //task-5
+    elementRemove.remove();
+
+    const myLists = document.getElementById('myList'); //task-6
+    if (myLists.lastChild) {
+         myLists.removeChild(myList.lastChild);
+    }
+
+
+
+    const image = document.getElementById('myImage'); //task-7
+    image.src = 'https://img.freepik.com/premium-photo/painting-peacock-with-blue-head-green-feathers_625492-5451.jpg';
+    image.setAttribute('width', '300');
+    image.setAttribute('height', '200');
+
+ 
+    const element = document.getElementById('myElement'); //task-8
+        // Add class 
+        document.getElementById('addClassButton').addEventListener('click', () => {
+            element.classList.add('newClass');
+        })
+        // Remove class
+        document.getElementById('removeClassButton').addEventListener('click', () => {
+            element.classList.remove('newClass');
+        })
+        // Toggle class 
+        document.getElementById('toggleClassButton').addEventListener('click', () => {
+            element.classList.toggle('newClass');
+        });
+
+ 
+        const paragraph = document.getElementById('myParagraph'); //task-9
+        const button = document.getElementById('changeTextButton');
+        button.addEventListener('click', () => {
+            paragraph.textContent = 'Text content has been changed!';
+        });
+
+
+
+
+    const ele = document.getElementById('myEle') //task-10
+    ele.addEventListener('mouseover', () => {
+        ele.style.borderColor = 'red'; 
+    });
+    ele.addEventListener('mouseout', () => {
+        ele.style.borderColor = 'black'; 
+    });
+
+
+</script>
+</html>
