@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event handling</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="myButton">Click Me!</button>
+    <p id="myParagraph">This is the original text.</p>
+
+    <hr>
+    <img id="myImage" src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-169994-674010.jpg&fm=jpg" alt="Example Image" width="300" height = "200">
+    <hr>
+    <div id="myElement" style="width: 200px; height: 200px; background-color: lightblue;">
+        Hover over me!
+    </div>
+
+    <hr>
+    <div id="hoverElement" style="width: 200px; height: 200px; background-color: lightblue;">
+        for background color!
+      </div>
+
+      <hr>
+      <input type="text" id="textInput" placeholder="Type something here...">
+
+      <hr>
+      <input type="text" id="inputField" placeholder="Type something here...">
+      <p id="outputParagraph">Current value: </p>
+      <hr>
+      <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        
+        <button type="submit">Submit</button>
+      </form>
+      <hr>
+      <form id="myForm">
+        <label for="mySelect">Choose an option:</label>
+        <select id="mySelect">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+        </select>
+        
+        <p id="selectedValue">Selected value: </p>
+      </form>
+      <hr>
+      <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+    <hr>
+    <div id="parent">
+        <button id="addButton">Add List Item</button>
+        <ul id="myList">
+            <!-- Initial list items -->
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+    </div>
+
+</body>
+    <script>
+        const button = document.getElementById('myButton'); //task-1
+        const paragraph = document.getElementById('myParagraph');
+        button.addEventListener('click', function() {
+        paragraph.textContent = 'The text has been changed!';
+        });
+
+        const image = document.getElementById('myImage'); //task-2
+        image.addEventListener('dblclick', function() {
+        image.classList.toggle('hidden');
+        });
+
+        const element = document.getElementById('myElement'); //task-3
+        element.addEventListener('mouseover', function() {
+        element.style.backgroundColor = 'lightgreen';
+        })
+        element.addEventListener('mouseout', function() {
+        element.style.backgroundColor = 'lightblue';
+        });
+
+        const hoverDiv = document.getElementById('hoverElement'); //task-4
+        hoverDiv.addEventListener('mouseover', function() {
+        hoverDiv.style.backgroundColor = 'lightgreen';
+        });
+        hoverDiv.addEventListener('mouseout', function() {
+        hoverDiv.style.backgroundColor = 'lightblue';
+        });
+
+        const inputField = document.getElementById('textInput'); //task-5
+        inputField.addEventListener('keydown', function(event) {
+        console.log('Key pressed:', event.key);
+        });
+
+        const inputElement = document.getElementById('inputField'); //task-6
+        const outputParagraph = document.getElementById('outputParagraph');
+        inputElement.addEventListener('keyup', function() {
+        outputParagraph.textContent = 'Current value: ' + inputElement.value;
+        });
+
+        
+        const form = document.getElementById('myForm'); //task-7
+        form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        formData.forEach((value, key) => {
+            console.log(`${key}: ${value}`);
+        });
+        });
+
+            
+                
+        const selectDropdown = document.getElementById('mySelect'); //task-8
+        const displayParagraph = document.getElementById('selectedValue');
+        selectDropdown.addEventListener('change', function() {
+        const selectedValue = selectDropdown.value;
+        displayParagraph.textContent = 'Selected value: ' + selectedValue;
+        });
+
+
+
+        const list = document.getElementById('myList'); //task-9
+        list.addEventListener('click', function(event) {
+            if (event.target && event.target.nodeName === 'LI') {
+                console.log(event.target.textContent);
+            }
+        });
+
+        const parent = document.getElementById('parent'); //task-10
+        const addButton = document.getElementById('addButton');
+        const lis = document.getElementById('myList');
+        parent.addEventListener('click', function(event) {
+            if (event.target && event.target.nodeName === 'LI') {
+                console.log('List item clicked:', event.target.textContent);
+            }
+        });
+        function addListItem() {
+            const newItem = document.createElement('li');
+            newItem.textContent = `Item ${lis.children.length + 1}`;
+            lis.appendChild(newItem);
+        }
+        addButton.addEventListener('click', addListItem);
+    </script>
+</html>
