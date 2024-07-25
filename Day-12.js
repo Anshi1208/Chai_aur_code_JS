@@ -1,9 +1,6 @@
 //Here is day-12 solution for 30 days javascript challenge
 //------------------(Error -Handling)---------------------
 
-
-
-
 //------------------Activity-1(Basic Error-Handling with try-catch)---------------------
 function throwErrorFunction() { //task-1
     throw new Error("This is an intentional error");
